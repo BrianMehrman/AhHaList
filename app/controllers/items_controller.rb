@@ -3,14 +3,6 @@ class ItemsController < ApplicationController
   before_filter :require_user
   before_filter :require_list
   
-  def require_user
-    if session[:user_id]
-      @user = User.find(session[:user_id])
-    else
-      redirect_to new_sessions_path, :notice => "You must be logged in to do this."
-    end
-  end
-
   def require_list
     if params[:list_id]
       @list = List.find(params[:list_id])
@@ -59,8 +51,11 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
-    @item.list = @list
+    # This...
+    @item = @list.items.build(params[:item])
+    # ...does the same as this
+    # @item = Item.new(params[:item])
+    # @item.list = @list
     
     respond_to do |format|
       if @item.save

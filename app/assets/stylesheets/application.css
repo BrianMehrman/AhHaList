@@ -11,17 +11,19 @@
 	
 	clear:both;
 }
-#header{
-	background-color:#c0cff8;
+#header {
+	background-color:#f8cfcf;
 }
-
+#header h1{
+	float:left;
+}
 #login {
 	float:right;
 	
 }
 
 #nav {
-	background-color:#a596ac;
+	background-color:#d6d6dc;
 }
 
 #nav ul {
