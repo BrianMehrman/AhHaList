@@ -12,9 +12,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    
+    # get items from the parent list
     @items = @list.items
-
+    # create a new item for the ajax form to use
+    @item = Item.new
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -59,6 +61,7 @@ class ItemsController < ApplicationController
     
     respond_to do |format|
       if @item.save
+        format.js 
         format.html { redirect_to list_url(@list), notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
@@ -91,7 +94,8 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.js
+      format.html { redirect_to list_path(@list) }
       format.json { head :ok }
     end
   end

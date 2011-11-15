@@ -11,9 +11,12 @@
 
 <p>
 	<h2>Items:</h2>
-	<ul>
+	
+	<%= render 'items/form' %>
+	
+	<ul id="ahha-list">
 		<% @list.items.each do |item| %>
-			<li><%= item.description %></li>
+			<%= render 'items/item', {:item=>item}  %>
 		<% end  %>
 	</ul>
 	<%= link_to "Add Item", new_list_item_url(@list) %>
