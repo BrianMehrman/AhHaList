@@ -6,7 +6,7 @@ class ListsController < ApplicationController
     if session[:user_id]
       @user = User.find(session[:user_id])
     else
-      redirect_to new_sessions_path, :notice => "You must be logged in to do this."
+      redirect_to new_session_path, :notice => "You must be logged in to do this."
     end
   end
   # GET /lists
