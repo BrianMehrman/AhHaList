@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AhHaList</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="container">
+	<div id="header">
+		<h1><%= link_to 'Capture your Ah-Ha Moments', root_path %></h1>
+		<% if session[:user_id].nil? %>
+		<p><%= link_to "Sign In", new_session_path %>| <%= link_to "Sign Up", new_user_path %></p>
+		<% else %>
+		<% user = User.find(session[:user_id]) %>
+		<p>Welcome, <%= user.name %>|<%= link_to "Sign out", session_url, :method => :delete %></p>
+		<% end %>
+		<nav>
+			<ul>
+				<li><%= link_to "Lists", lists_path %></li>
+			</ul>
+		</nav>
+	</div>
+	<p id="notice"><%= notice %></p>
+
+	<%= yield %>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<h1>AH Ha Moment List</h1>
+<p>Every have an ah-ha moment and forget to capture it, now you can. Sign up for a free account today!</p>
+
+<% if logged_in? %>
+
+<h2>My Ah-ha Lists:</h2>
+<ul>
+	<% current_user.lists.each do |list| %>
+		<li> <%= link_to list.name, list_url(list) %> </li>
+	<% end %>
+</ul>	
+	
+<% end %>

@@ -1,0 +1,24 @@
+
+<p>
+  <b>Name:</b>
+  <%= @list.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @list.user.name %>
+</p>
+
+<p>
+	<h2>Items:</h2>
+	<ul>
+		<% @list.items.each do |item| %>
+			<li><%= item.description %></li>
+		<% end  %>
+	</ul>
+	<%= link_to "Add Item", new_list_item_url(@list) %>
+</p>
+
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', root_path %>
